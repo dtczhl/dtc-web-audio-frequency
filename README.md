@@ -23,4 +23,12 @@ Default IDs
 
 ## Browser Tested
 
+Support
+
 *   Chrome
+*   Edge
+*   Firefox
+
+Not support
+
+*   IE
