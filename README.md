@@ -6,7 +6,7 @@
 
 Play sounds of frequencies on web. Go to my website <https://www.huanlezhang.com/gallery> to have a brief idea of it.  
 
-<img src="./image/screenshot.jpg" width="300" alt="Screenshot"/>
+<img src="./image/screenshot.jpg" width="400" alt="Screenshot"/>
 
 Screenshot from Chrome.
 
