@@ -31,7 +31,7 @@ $(function(){
     if (oscillator != null) {
       oscillator.stop();
       oscillator = audioContext.createOscillator();
-      oscillator.type = 'sine';
+      oscillator.type = "sine";
       oscillator.frequency.setValueAtTime(freqSlider.value, audioContext.currentTime); // value in hertz
       oscillator.connect(audioContext.destination);
       oscillator.start();
