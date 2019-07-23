@@ -1,13 +1,30 @@
-var freqSlider;
-var freqValue;
+/*
+* Play sounds of frequencies on web
+*
+* Huanle Zhang, University of California, Davis
+* www.huanlezhang.com
+* 07-23-2019
+*/
 
-var audioContext;
+/* --- Configurations --- */
+
+var freqSliderID = "freqSlider";
+var freqTextID = "freqValue";
+var freqStartBtnID = "freqStart";
+var freqStopBtnID = "freqStop";
+
+/* --- end of configurations --- */
+
+var freqSlider = null;
+var freqValue = null;
+
+var audioContext = null;
 var oscillator = null;
 
 $(function(){
 // main
-  freqSlider = $("#freqSlider")[0];
-  freqValue = $("#freqValue")[0];
+  freqSlider = $("#" + freqSliderID)[0];
+  freqValue = $("#" + freqTextID)[0];
   freqValue.innerHTML = freqSlider.value;
   freqSlider.oninput = function(){
     freqValue.innerHTML = this.value;
@@ -26,28 +43,25 @@ $(function(){
 function dtcWebAudioFrequencyPlay(enable){
 
   if (enable) {
-    $("#freqStart")[0].disabled = true;
-    $("#freqStop")[0].disabled = false;
+    $("#" + freqStartBtnID)[0].disabled = true;
+    $("#" + freqStopBtnID)[0].disabled = false;
     try {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
     } catch (error) {
       window.alert("Sorry, but your browser doesn't support the Web Audio API!");
     }
 
-    if (audioContext !== undefined) {
-      /* Our code goes here */
-      console.log("OK");
-
+    if (audioContext != null) {
       // create Oscillator node
       oscillator = audioContext.createOscillator();
-      oscillator.type = 'sine';
+      oscillator.type = "sine";
       oscillator.frequency.setValueAtTime(freqSlider.value, audioContext.currentTime); // value in hertz
       oscillator.connect(audioContext.destination);
       oscillator.start();
     }
   } else {
-    $("#freqStart")[0].disabled = false;
-    $("#freqStop")[0].disabled = true;
+    $("#" + freqStartBtnID)[0].disabled = false;
+    $("#" + freqStopBtnID)[0].disabled = true;
     if (oscillator !== null) {
     oscillator.stop();
     oscillator = null;
